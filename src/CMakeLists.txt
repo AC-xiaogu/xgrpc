@@ -2,7 +2,7 @@ find_package(Protobuf REQUIRED)
 
 # -------------------------------
 # 由于muduo的CMakeLists比较老旧，没有target的相关属性
-# 故需要额外创建target并配置有关属性
+# 故需要额外创建target并配置有关属性，后续即可
 find_package(Threads)
 # Stupid, does not support multi-thread compiling
 if(NOT TARGET muduo::base)
@@ -35,14 +35,14 @@ endif()
 # )
 
 add_library(xgrpc
-#   xgrpcapplication.cc 
-#   xgrpcconfig.cc 
-#   rpcheader.pb.cc 
-#   xgrpcprovider.cc 
-#   xgrpcchannel.cc
-#   xgrpccontroller.cc   
+  application.cc 
+  config.cc 
+  rpcheader.pb.cc 
+  provider.cc 
+  channel.cc
+  controller.cc   
   logger.cc
-#   zookeeperutil.cc
+  zkclient.cc
 )
 
 target_include_directories(xgrpc
@@ -54,6 +54,7 @@ target_link_libraries(xgrpc
   PUBLIC muduo::base
   PUBLIC muduo::net
   PRIVATE Threads::Threads
+  PRIVATE zookeeper_mt
 )
 
 add_library(xgrpc::xgrpc ALIAS xgrpc)

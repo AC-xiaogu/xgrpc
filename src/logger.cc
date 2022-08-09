@@ -3,6 +3,7 @@
 #include <time.h>
 
 #include <iostream>
+#include <string>
 
 Logger &Logger::GetInstance() {
     static Logger logger;

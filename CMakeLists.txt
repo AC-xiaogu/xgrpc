@@ -12,4 +12,4 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib) # static libraries
 
 add_subdirectory(src)
 # add_subdirectory(test)
-# add_subdirectory(example)
+add_subdirectory(example)
